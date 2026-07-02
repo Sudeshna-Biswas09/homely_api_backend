@@ -59,9 +59,23 @@ cookie: {
 }));
 
 
+const allowedOrigins = [
+  'http://localhost:5173', 
+  'https://homely-api-frontend.vercel.app'
+];
+
 app.use(cors({
-  origin: 'http://localhost:5173', // Vite's default port
-  credentials: true // Crucial: This allows session cookies to cross the bridge!
+  origin: function (origin, callback) {
+    // allow requests with no origin (like mobile apps or curl)
+    if (!origin) return callback(null, true);
+    
+    if (allowedOrigins.indexOf(origin) !== -1) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  credentials: true
 }));
 
 app.use((req, res, next) => {
