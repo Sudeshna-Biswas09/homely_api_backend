@@ -13,7 +13,7 @@ const sendEmail = async (options) => {
 
   // 2. Define the email options (The Envelope & Letter)
   const mailOptions = {
-    from: 'Homely Reservations sudeshnabiswas2005@gmail.com',
+    from: 'Homely Reservations <sudeshnabiswas2005@gmail.com>',
     to: options.email,
     subject: options.subject,
     html: options.html, // Using HTML allows us to send beautiful emails!

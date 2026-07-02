@@ -208,6 +208,7 @@ exports.createBooking = async (req, res) => {
     `;
 
     // 3. Send the email (Don't use await if you want it to happen in the background!)
+    console.log("Sending email to:", req.session.user.email);
     sendEmail({
       email: req.session.user.email, // Assuming you store user email in the session
       subject: `Booking Confirmation: ${home.housename}`,
