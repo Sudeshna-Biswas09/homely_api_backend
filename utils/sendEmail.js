@@ -5,8 +5,8 @@ const sendEmail = async (options) => {
   // 1. Create a transporter (The Mail Truck)
   const transporter = nodemailer.createTransport({
     host: 'smtp.gmail.com',
-    port: 465,
-    secure: true, // true for 465, false for other ports
+    port: 587,
+    secure: false, // true for 465, false for other ports
     family: 4,
     auth: {
       user: process.env.EMAIL_USER,
