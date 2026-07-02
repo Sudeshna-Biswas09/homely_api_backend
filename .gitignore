@@ -1,0 +1,8 @@
+# Ignore the secret vault
+.env
+
+# Ignore heavy node modules
+node_modules/
+
+# Ignore the images uploaded locally
+images/
