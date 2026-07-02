@@ -43,11 +43,19 @@ const store = new MongoDBstore({
   collection: "sessions",
 });
 
+app.set("trust proxy", 1);
 app.use(session({
   secret: process.env.SESSION_SECRET,
   resave: false,
-  saveUninitialized: true,
+  saveUninitialized: false,
   store: store,
+  
+cookie: {
+    secure: true,        // Requires HTTPS (Render provides this automatically)
+    sameSite: 'none',    // Explicitly allows the cookie to travel across different domains
+    maxAge: 1000 * 60 * 60 * 48 // Keeps the user logged in for 48 hours
+  }
+  
 }));
 
 
@@ -78,7 +86,9 @@ app.use("/api/host", (req, res, next) => {
   if (req.isloggedIn) {
     next();
   } else {
-    res.redirect("/login");
+    //res.redirect("/login");
+
+    res.status(401).json({ success: false, message: "Unauthorized. Please log in." });
   }
 });
 
