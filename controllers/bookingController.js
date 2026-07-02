@@ -37,8 +37,8 @@ exports.createCheckoutSession = async (req, res) => {
       ],
       mode: 'payment',
       // Redirect URLs after Stripe finishes
-      success_url: `http://localhost:5173/bookings?success=true`,
-      cancel_url: `http://localhost:5173/homes/${homeId}?canceled=true`,
+      success_url: `https://homely-api-frontend.vercel.app/bookings?success=true`,
+      cancel_url: `https://homely-api-frontend.vercel.app/homes/${homeId}?canceled=true`,
       client_reference_id: req.session.user._id.toString(), // Attach the guest ID to the payment
     });
 
