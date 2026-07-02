@@ -61,7 +61,7 @@ cookie: {
 
 const allowedOrigins = [
   'http://localhost:5173', 
-  'https://homely-api-frontend.vercel.app'
+  'https://homely-api-frontend-git-main-sudeshna.vercel.app'
 ];
 
 app.use(cors({
